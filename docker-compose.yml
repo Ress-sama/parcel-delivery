@@ -1,0 +1,125 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.8
+    container_name: zookeeper
+    ports:
+      - "2181"
+    volumes:
+      - "zookeeper_data:/bitnami"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+  kafka:
+    image: docker.io/bitnami/kafka:3.2
+    container_name: kafka
+    ports:
+      - "9092"
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      zookeeper:
+        condition: service_started
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    container_name: kafdrop
+    restart: "no"
+    ports:
+      - "9000:9000"
+    environment:
+      KAFKA_BROKERCONNECT: "kafka:9092"
+      JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify"
+    depends_on:
+      kafka:
+        condition: service_started
+
+  parcel-service:
+    build:
+      context: ./parcel-service
+      dockerfile: Dockerfile
+    container_name: parcel-service
+    ports:
+      - '8080'
+    depends_on:
+      kafka:
+        condition: service_started
+      db:
+        condition: service_started
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    container_name: user-service
+    ports:
+      - '8080'
+    depends_on:
+      db:
+        condition: service_started
+
+  admin-service:
+    build:
+      context: ./admin-service
+      dockerfile: Dockerfile
+    container_name: admin-service
+    ports:
+      - '8080'
+    depends_on:
+      db:
+        condition: service_started
+
+  delivery-service:
+    build:
+      context: ./delivery-service
+      dockerfile: Dockerfile
+    container_name: delivery-service
+    ports:
+      - '8080'
+    depends_on:
+      kafka:
+        condition: service_started
+      db:
+        condition: service_started
+
+  courier-service:
+    build:
+      context: ./courier-service
+      dockerfile: Dockerfile
+    container_name: courier-service
+    ports:
+      - '8080'
+    depends_on:
+      db:
+        condition: service_started
+
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: gateway
+    ports:
+      - '8080:8080'
+
+volumes:
+  postgres_data:
+    driver: local
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local

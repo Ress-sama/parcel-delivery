@@ -1,0 +1,42 @@
+server:
+  port: 8282
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/users
+    username: postgres
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      pool-name: user-service
+      auto-commit: false
+      connection-timeout: 10000
+      idle-timeout: 60000
+      max-lifetime: 120000
+      minimum-idle: 5
+      maximum-pool-size: 10
+  jpa:
+    database: postgresql
+    show-sql: false
+  liquibase:
+    change-log: db/changelog/changelog-master.yaml
+
+security:
+  jwt:
+    base64-secret: c9Z6R+fhfbwM1D3Pj3/B+mT9ddFjETK/5CBlA6dWtXnJ92k3IUVwIvLJdKrE3RKW3zMQUtNZv/0r+2Efa7dNbw==
+    access-token-validity-in-milliseconds: 60000
+  cors:
+    origin: "*"
+    method: "*"
+
+url:
+  csp: "script-src 'self' https://trustedscripts.example.com; object-src https://trustedplugins.example.com; report-uri /csp-report-endpoint/"
+  ignore: /error,/favicon.ico,/,/csrf,/actuator/**,/swagger-ui.html,/app/**/*.{js,html},/i18n/**,/content/**,/swagger-ui/index.html,/v2/api-docs,/webjars/**,/swagger-resources/**
+
+application:
+  swagger:
+    title: Welcome to User Service of "Parcel Delivery"!!
+    description: API used for user!
+    version: 1.0.0
+

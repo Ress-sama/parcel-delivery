@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Uzeyir Hajimuradov
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: user_location
+            columns:
+              - column:
+                  name: id
+                  type: int8
+                  autoIncrement: true
+                  constraints:
+                    primaryKeyName: pk_user_location
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_user-location_user
+                    references: users(id)
+              - column:
+                  name: longitude
+                  type: float
+                  constraints:
+                    nullable: false
+              - column:
+                  name: latitude
+                  type: float
+                  constraints:
+                    nullable: false

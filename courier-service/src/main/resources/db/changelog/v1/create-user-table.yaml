@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Uzeyir Hajimuradov
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKeyName: pk_user
+                    primaryKey: true
+              - column:
+                  name: full_name
+                  type: varchar(255)
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    uniqueConstraintName: uq_user_username
+                    unique: true
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: available
+                  type: boolean
+                  constraints:
+                    nullable: false

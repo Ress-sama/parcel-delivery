@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/courier
+    username: postgres
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      pool-name: courier-service
+      auto-commit: false
+      connection-timeout: 10000
+      idle-timeout: 60000
+      max-lifetime: 120000
+      minimum-idle: 5
+      maximum-pool-size: 10
+  jpa:
+    database: postgresql
+    show-sql: false
+  liquibase:
+    change-log: db/changelog/changelog-master.yaml
+  kafka:
+    bootstrap-servers: kafka:9092
+
+security:
+  jwt:
+    base64-secret: s0BnBjOYl6oPcUd1kg+/R2yX8xenL2s9exfPNbJMc8+PyRV9qKjExyTffm6p+ZPGiEdMNtyJWVyHK1HJv+V7/g==
+    access-token-validity-in-milliseconds: 60000
+  cors:
+    origin: "*"
+    method: "*"
+
+url:
+  csp: "script-src 'self' https://trustedscripts.example.com; object-src https://trustedplugins.example.com; report-uri /csp-report-endpoint/"
+  ignore: /error,/favicon.ico,/,/csrf,/actuator/**,/swagger-ui.html,/app/**/*.{js,html},/i18n/**,/content/**,/swagger-ui/index.html,/v2/api-docs,/webjars/**,/swagger-resources/**
+
+application:
+  swagger:
+    title: Welcome to Courier Service of "Parcel Delivery"!
+    description: API used for couriers!
+    version: 1.0.0
+

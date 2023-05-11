@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Uzeyir Hajimuradov
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: deliveries
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKeyName: pk_delivery
+                    primaryKey: true
+              - column:
+                  name: parcel_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: courier_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(255)

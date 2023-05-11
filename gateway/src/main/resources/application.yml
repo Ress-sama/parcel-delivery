@@ -1,0 +1,35 @@
+service:
+  parcel:
+    name: parcel-service
+    url: http://parcel-service:8080/
+  delivery:
+    name: delivery-service
+    url: http://delivery-service:8080/
+  user:
+    name: user-service
+    url: http://user-service:8080/
+  admin:
+    name: admin-service
+    url: http://admin-service:8080/
+  courier:
+    name: courier-service
+    url: http://courier-service:8080/
+
+security:
+  jwt:
+    base64-secret: sdsf/YS9jxpSAnB6ZUbqHGRfqbYdkPJ1lNS/RayK9ysqOlQ2PlgsQlXs0QMepA5lwb4jMzwunbLmIPxIAbJqYA==
+    access-token-validity-in-milliseconds: 60000
+  cors:
+    origin: "*"
+    method: "*"
+
+application:
+  swagger:
+    title: Welcome to GATEWAY!
+    description: API used for all!
+    version: 3.0.0
+
+spring:
+  kafka:
+    bootstrap-servers: kafka:9092
+

@@ -1,0 +1,39 @@
+server:
+  port: 8181
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/delivery
+    username: postgres
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      pool-name: delivery-service
+      auto-commit: false
+      connection-timeout: 10000
+      idle-timeout: 60000
+      max-lifetime: 120000
+      minimum-idle: 5
+      maximum-pool-size: 10
+  jpa:
+    database: postgresql
+    show-sql: false
+  liquibase:
+    change-log: db/changelog/changelog-master.yaml
+  kafka:
+    bootstrap-servers: kafka:9092
+
+security:
+  cors:
+    origin: "*"
+    method: "*"
+
+url:
+  csp: "script-src 'self' https://trustedscripts.example.com; object-src https://trustedplugins.example.com; report-uri /csp-report-endpoint/"
+  ignore: /error,/favicon.ico,/,/csrf,/actuator/**,/swagger-ui.html,/app/**/*.{js,html},/i18n/**,/content/**,/swagger-ui/index.html,/v2/api-docs,/webjars/**,/swagger-resources/**
+
+application:
+  swagger:
+    title: Welcome to delivery service!
+    description: API used for manage parcel deliveries!
+    version: 1.0.0

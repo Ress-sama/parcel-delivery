@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Uzeyir Hajimuradov
+      changes:
+        - createTable:
+            tableName: parcels
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: details
+                  type: varchar(255)
+              - column:
+                  name: start_location_longitude
+                  type: float
+                  constraints:
+                    nullable: false
+              - column:
+                  name: start_location_latitude
+                  type: float
+                  constraints:
+                    nullable: false
+              - column:
+                  name: target_location_longitude
+                  type: float
+                  constraints:
+                    nullable: false
+              - column:
+                  name: target_location_latitude
+                  type: float
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    nullable: false

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/admin-service" />
+        <option name="gradleJvm" value="openjdk-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/admin-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/courier-service" />
+        <option name="gradleJvm" value="openjdk-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/courier-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/delivery-service" />
+        <option name="gradleJvm" value="openjdk-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/delivery-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/gateway" />
+        <option name="gradleJvm" value="openjdk-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/gateway" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/parcel-service" />
+        <option name="gradleJvm" value="openjdk-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/parcel-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/user-service" />
+        <option name="gradleJvm" value="openjdk-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/user-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
