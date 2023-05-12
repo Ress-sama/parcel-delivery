@@ -15,6 +15,10 @@ for linux os
 docker-compose up --build 
 ```
 
+## Deployable 
+
+https://we.tl/t-eTIc1UvArx 
+
 ## Usage
 
 Gateway API 
